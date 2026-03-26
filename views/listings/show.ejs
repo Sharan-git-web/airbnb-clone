@@ -1,0 +1,68 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="show-page">
+
+    <!-- TITLE -->
+    <h2 class="show-title"><%= listing.title %></h2>
+
+    <!-- IMAGE -->
+    <div class="show-img-container">
+        <img 
+            src="<%= listing.image.url %>" 
+            class="show-img" 
+            alt="listing-image">
+    </div>
+
+    <div class="row mt-4">
+
+        <!-- LEFT CONTENT -->
+        <div class="col-md-8">
+
+            <p class="show-location">
+                <%= listing.location %>, <%= listing.country %>
+            </p>
+
+            <p class="show-desc">
+                <%= listing.description %>
+            </p>
+
+            <!-- BUTTONS -->
+            <div class="mt-4 d-flex gap-3">
+                <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark">
+                    Edit
+                </a>
+
+                <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+                    <button class="btn btn-outline-danger">
+                        Delete
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <!-- RIGHT PRICE CARD -->
+        <div class="col-md-4">
+
+            <div class="price-card">
+
+                <h4>
+                    ₹ <%= listing.price ? listing.price.toLocaleString("en-IN") : "N/A" %>
+                    <span>/ night</span>
+                </h4>
+
+                <button class="btn btn-danger w-100 mt-3">
+                    Reserve
+                </button>
+
+                <p class="text-muted text-center mt-2">
+                    You won't be charged yet
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
